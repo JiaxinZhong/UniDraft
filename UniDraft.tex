@@ -1,0 +1,248 @@
+% Default: Pdflatex -> Bibtex -> Pdflatex -> Pdflatex
+\documentclass{UniDraft}
+
+% ============================================================
+% Common settings 
+% ============================================================
+
+% ============================================================
+
+% -------------------------------------------------------------
+% use biblatex to manage references
+% \usepackage[
+%     doi=false,
+%     isbn=false,
+%     url=false,
+%     eprint=false,
+%     giveninits=true,
+%     date=year,
+%     sorting = none,
+%     style = numeric-comp
+% ]{biblatex}
+% % biblatex_jiaxin: Jiaxin's customized bibliography file
+% % biblatex: Other bibliography
+% \addbibresource{biblatex_jiaxin.bib}
+% \addbibresource{biblatex.bib}
+% -------------------------------------------------------------
+
+% -------------------------------------------------------------
+\title{\bfseries \large Paper Title is Here}
+
+% -------------------------------------------------------------
+\author[1]{Jia-Xin Zhong}
+\author[1]{B Author}
+\author[2,3,*]{C Author}
+\author[1,$\dagger$]{D Author}
+
+\affil[1]{Key Laboratory of Modern Acoustics and Institute of Acoustics, Nanjing University, Nanjing 210093, China}
+\affil[2]{Graduate Program in Acoustics, The Pennsylvania State University, University Park, PA 16802, USA}
+\affil[3]{Affiliation 3}
+% \affil[*]{stefano.longhi@polimi.it}
+% \affil[$\dagger$]{yqj5201@psu.edu}
+
+% \date{}
+% Put email in date field
+\date{\vspace{-1em}\small 
+    % Email: 
+    \textsuperscript{*}C.Author@psu.edu;
+    \textsuperscript{$\dagger$}D.Author@nju.edu.cn
+}
+
+% Adding section symbol to section
+% \usepackage{titlesec}
+% \titleformat{\section}
+% {\normalfont\Large\bfseries}{S\thesection}{1em}{}
+
+
+% ============================================================
+% 小节标题的风格选择，以下多种风格任选其一，取消注释即可
+% ============================================================
+
+% ------------------------------------------------------------
+% 风格1：小节的编号为 S1、S2、S3 等的风格
+% ------------------------------------------------------------
+% \renewcommand*{\thesection}{S\arabic{section}}
+% ------------------------------------------------------------
+
+% ------------------------------------------------------------
+% 风格2：小节的编号为 I.A、I.B、II.C 等风格
+% ------------------------------------------------------------
+% \renewcommand{\thesection}{\Roman{section}} 
+% \renewcommand{\thesubsection}{\Roman{section}.\Alph{subsection}}
+% ------------------------------------------------------------
+
+% ------------------------------------------------------------
+% 风格3
+% - TOC 和正文中小节的编号为 Section I.、A. 等风格（适用丁鲲推荐的PRL）
+% - \ref 引用时仍保留 I 和 A 等风格
+% ------------------------------------------------------------
+% \renewcommand{\thesection}{\Roman{section}}
+% \renewcommand{\thesubsection}{\Alph{subsection}}
+% ------------------------------------------------------------
+
+% ------------------------------------------------------------
+% 设置正文中标题的格式；需要 titlesec 宏包
+% ------------------------------------------------------------ 
+% \titleformat{\section} % 设置一级标题（Section）格式
+%   {\normalfont\Large\bfseries} % 字体格式：正常字体、大号、加粗
+%   {Section~\thesection.}       % 标签格式：显示为 "Section 1." (注意这里加了点)
+%   {1em}                        % 【关键】标签与标题文字之间的水平间距 (1em 约等于一个字符宽度)
+%   {}                           % 标题前的代码（通常为空）
+
+% \titleformat{\subsection}      % 设置二级标题（Subsection）格式
+%   {\normalfont\large\bfseries} % 字体格式：比一级小一点、加粗
+%   {\thesubsection.}            % 标签格式：显示为 "1.1." (手动加了一个点)
+%   {1em}                        % 标签与标题文字之间的水平间距【可适当调整】
+%   {}
+% ------------------------------------------------------------
+
+% ------------------------------------------------------------
+% 风格4：小节标题前不加编号，只显示标题文字
+% ------------------------------------------------------------
+\titleformat{\section}         % 设置一级标题（Section）格式
+  {\normalfont\Large\bfseries} % 字体格式：正常字体、大号、加粗
+  {}                           % 【关键】标签留空，即不显示 "Section 1"
+  {0pt}                        % 【关键】标签与标题文字之间的水平间距设为 0
+  {}                           % 标题前的代码
+
+\titleformat{\subsection}      % 设置二级标题（Subsection）格式
+  {\normalfont\large\bfseries} % 字体格式：比一级小一点、加粗
+  {}                           % 【关键】标签留空
+  {0pt}                        % 【关键】间距设为 0
+  {}
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+% ------------------------------------------------------------
+
+% ============================================================
+
+% ------------------------------------------------------------
+% Abstract
+\usepackage{abstract}
+
+\renewcommand{\absnamepos}{flushleft} % Left align the abstract name
+% Set font size and bold for abstract title
+\renewcommand{\abstractnamefont}{\bfseries\large}
+\setlength{\absleftindent}{0pt} % No indentation on the left
+\setlength{\absrightindent}{0pt} % No indentation on the right
+% Set font size and no indentation for abstract text
+\renewcommand{\abstracttextfont}{\small\setlength{\parindent}{0pt}}
+
+% ------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Enable line numbers for review. Comment to disable.
+\linenumbers
+
+% 把标题加入PDF书签，但不在目录里加上标题
+\pdfbookmark[1]{Title}{title} % [1] 是书签层级，'title' 是内部引用标签
+
+\maketitle
+% \addcontentsline{toc}{part}{Title}
+% enable Page 1 of xx at the first page
+
+% \addcontentsline{toc}{section}{Title}
+
+% \addcontentsline{toc}{section}{Contents}
+% \vspace{-2em}
+
+\begin{abstract}
+    \lipsum[1]
+\end{abstract}
+
+\thispagestyle{firststyle}
+
+\newpage
+
+\section{Introduction}
+Test reference \cite{Assouar2018AcousticMetasurfaces}.
+\lipsum[2]
+
+\section{Results}
+
+\subsection{Subsection 1}
+\lipsum[3]
+
+\subsection{Subsection 2}
+\lipsum[4]
+
+\section{Conclusions}
+
+
+
+\section{Acknowledgment}
+Y. J. thanks the support of startup funds from Penn State University and NSF xxxx.
+
+\section{Author contributions}
+
+J.-X. Z., S. L., and Y. J. conceived the project.
+S. L. and J.-X. Z. performed theoretical analysis and numerical simulations.
+J.-X. Z. designed and performed the experiments with assistance from J. W. K..
+J.-X. Z., S. L., and Y. J. wrote the paper.
+S. L. and Y. J. supervised the project.
+
+\section{Competing interests}
+The authors declare no competing interests.
+
+
+\clearpage
+\bibliographystyle{unsrt}
+\bibliography{bibtex}
+% \printbibliography
+\addcontentsline{toc}{section}{References}
+
+\clearpage 
+% ============================================================
+% Methods 
+% ============================================================
+\section{Methods}
+
+\subsection{Method 1}
+\lipsum[5]
+\subsection{Method 2}
+\lipsum[6]
+
+
+
+% ============================================================  
+
+% ============================================================
+% Figures are placed at the end of the manuscript
+% ============================================================
+\clearpage
+\section{Figures}
+\vfill
+\begin{figure}[!htbp]
+    \centering
+    \phantomsection 
+    \includegraphics[width=0.6\textwidth]{example-image}
+    \caption{
+        \textbf{One sentence summary of figure.}
+        \lipsum[10]
+    }
+    \label{fig:schematic}
+    \addcontentsline{toc}{subsection}{Figure \thefigure}
+\end{figure}
+\vfill
+
+\clearpage
+\begin{figure}[p]
+    \centering
+    \phantomsection 
+    \includegraphics[width=0.95\textwidth]{example-image} 
+    \caption{
+        \textbf{One sentence summary of figure.}
+        \lipsum[2]
+    }
+    \label{fig:exp_setup}
+    \addcontentsline{toc}{subsection}{Figure \thefigure}
+\end{figure}
+
+
+% ============================================================
+
+\end{document}
+
+
