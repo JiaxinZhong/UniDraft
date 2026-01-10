@@ -62,11 +62,12 @@
 \usepackage{amssymb}
 
 
-\usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}
 % \usepackage{mlmodern}
-\usepackage{tgtermes}
+\usepackage{newtxtext}
+% \usepackage{tgtermes}
 % \usepackage{newtxmath} % 数学字体
-\usepackage{mathptmx} % 数学字体
+% \usepackage{mathptmx} % 数学字体
 
 
 % No indentations for each paragraph
