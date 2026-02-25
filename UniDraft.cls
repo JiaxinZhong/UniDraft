@@ -40,16 +40,17 @@
 \setcounter{tocdepth}{2}
 \hypersetup{
     bookmarksopenlevel = 3,
-    citecolor = blue,
-	colorlinks		=	true,
+	colorlinks	=	true,
 	bookmarks		=	true,
 	bookmarksopen	=	true,
     % bookmarksdepth  =   2,
 	pdfstartview	=	Fit,
 	% pdftitle		=	{Supplementary Material},
 	% pdfauthor		=	{Jiaxin Zhong},
+    citecolor = blue,
+    urlcolor = magenta,
+    linkcolor = blue
 }
-\hypersetup{linkcolor=blue}
 
 % open book mark at arbitrary level
 \usepackage[open, numbered]{bookmark}
@@ -264,7 +265,8 @@
 
 
 % 加载 cite 宏包，自动将 [1,2,3,4,5] 变成 [1-5]
-\usepackage{cite}
+% Comment this line if you use biblatex
+% \usepackage{cite}
 
 % Support line numbers for review
 \usepackage[mathlines]{lineno}

@@ -1,4 +1,5 @@
-% Default: Pdflatex -> Bibtex -> Pdflatex -> Pdflatex
+% Preferred (biblatex): Pdflatex -> biber -> Pdflatex -> Pdflatex
+% Optional (bibtex): Pdflatex -> Bibtex -> Pdflatex -> Pdflatex
 \documentclass{UniDraft}
 
 % ============================================================
@@ -8,21 +9,21 @@
 % ============================================================
 
 % -------------------------------------------------------------
-% use biblatex to manage references
-% \usepackage[
-%     doi=false,
-%     isbn=false,
-%     url=false,
-%     eprint=false,
-%     giveninits=true,
-%     date=year,
-%     sorting = none,
-%     style = numeric-comp
-% ]{biblatex}
-% % biblatex_jiaxin: Jiaxin's customized bibliography file
-% % biblatex: Other bibliography
-% \addbibresource{biblatex_jiaxin.bib}
-% \addbibresource{biblatex.bib}
+% [Preferred] Use biblatex to manage references
+\usepackage[
+    doi=false,
+    isbn=false,
+    url=false,
+    eprint=true,
+    giveninits=true,
+    date=year,
+    sorting = none,
+    style = numeric-comp
+]{biblatex}
+% biblatex_jiaxin: Jiaxin's customized bibliography file
+% biblatex: Other bibliography
+\addbibresource{biblatex_jiaxin.bib}
+% \addbibresource{biblatex.bib} % Add more bib files if needed
 % -------------------------------------------------------------
 
 % -------------------------------------------------------------
@@ -31,7 +32,8 @@
 % -------------------------------------------------------------
 % Author info
 %   - Symbols for corresponding authors and equal contributions
-%       \ast, \dagger, \ddagger, \mathsection, \mathparagraph, |, \ast\ast, \dagger\dagger, \ddagger\ddagger
+%       \ast, \dagger, \ddagger, \mathsection, \mathparagraph, 
+%       |, \ast\ast, \dagger\dagger, \ddagger\ddagger
 % -------------------------------------------------------------
 \author[1,$\ast$]{Jia-Xin Zhong}
 \author[1,$\ast$]{B Author}
@@ -41,13 +43,16 @@
 \affil[1]{Key Laboratory of Modern Acoustics and Institute of Acoustics, Nanjing University, Nanjing 210093, China}
 \affil[2]{Graduate Program in Acoustics, The Pennsylvania State University, University Park, PA 16802, USA}
 \affil[3]{Affiliation 3}
-% \affil[*]{stefano.longhi@polimi.it}
-% \affil[$\dagger$]{yqj5201@psu.edu}
 
+% Option 1
+% \affil[*]{C.Author@psu.edu}
+% \affil[$\dagger$]{D.Author@nju.edu.cn}
+
+% Option 2
 % \date{}
 % Put email in date field
 \date{\vspace{-1em}\small 
-    \textsuperscript{$\ast$}These authors contributted equally\\
+    \textsuperscript{$\ast$}These authors contributed equally\\
     % Email: 
     \textsuperscript{$\dagger$}C.Author@psu.edu;
     \textsuperscript{$\ddagger$}D.Author@nju.edu.cn
@@ -165,6 +170,7 @@
 
 \section{Introduction}
 Test reference \cite{Assouar2018AcousticMetasurfaces}.
+ArXiv reference \cite{Zhong2026ObservationErraticNonHermitian}.
 \lipsum[2]
 
 \section{Results}
@@ -202,9 +208,17 @@ The authors declare no competing interests.
 
 
 \clearpage
-\bibliographystyle{unsrt}
-\bibliography{bibtex}
-% \printbibliography
+% ------------------------------------------------------------
+% bibtex
+% \bibliographystyle{unsrt}
+% \bibliography{bibtex}
+% ------------------------------------------------------------
+
+% ------------------------------------------------------------
+% biblatex
+\printbibliography
+% ------------------------------------------------------------
+
 \addcontentsline{toc}{section}{References}
 
 \clearpage 
